@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:weather_app/core/theme/app_colors.dart';
 import 'package:weather_app/core/utils/app_string.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+import 'package:weather_app/feature/search/search_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -17,11 +18,15 @@ class HomeScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
           child: Image.asset("asstes/images/cairo.png",fit: BoxFit.cover,)),
         Positioned(top: 20,left: 20,
-          child: IconButton(onPressed: (){}, 
-          icon: Icon(Icons.search,color: AppColors.black,))),
+          child: IconButton(onPressed: (){
+            Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => const SearchScreen(),));
+           
+          }, 
+          icon: const Icon(Icons.search,color: AppColors.black,))),
           Positioned(top: 50,
             left: MediaQuery.of(context).size.width / 3,
-            child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+            child: const Column(crossAxisAlignment: CrossAxisAlignment.center,
               children: [
               Text(AppString.cairo,
                 style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold),),
@@ -36,16 +41,16 @@ class HomeScreen extends StatelessWidget {
               child: LiquidGlass(
               shape: LiquidRoundedSuperellipse(borderRadius: 20),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                 child: Text(AppString.aQI53,
                   style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               ),))
             ],),
           ),
-          Positioned(top: 600,bottom: -30,left: 20,right: 20,
+          const Positioned(top: 600,bottom: -30,left: 20,right: 20,
             child: LiquidGlassLayer(child: LiquidGlass(shape: LiquidRoundedSuperellipse(borderRadius: 20),
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.0),
               child: Column( children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
